@@ -1,0 +1,39 @@
+{
+  "session_name": "goud",
+  "windows": [
+    {
+      "window_name": "FE - nvim",
+      "shell_command_before": [
+        "cd ~/Projects/work/remastr"
+      ]
+    },
+    {
+      "layout": "main-vertical", 
+      "window_name": "git + servers",
+      "options": {
+        "main-pane-width": 120
+      },
+      "focus": true,
+      "panes": [
+        {
+          "focus": true
+        },
+        {
+          "shell_command": [
+            "cd goud_frontend",
+            "clear"
+          ]
+        },
+        {
+          "shell_command": [
+            "cd goud_backend",
+            "clear"
+          ]
+        }
+      ], 
+      "shell_command_before": [
+        "cd ~/Projects/work/remastr"
+      ]
+    }
+  ]
+}

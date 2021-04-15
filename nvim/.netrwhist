@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/lukasletovanec/.config/.git'
+let g:netrw_dirhist_8='/Users/lukasletovanec/.config'
+let g:netrw_dirhist_7='/Users/lukasletovanec/.config/nvim'
+let g:netrw_dirhist_6='/Users/lukasletovanec/Projects/work/remastr/goud_frontend'
+let g:netrw_dirhist_5='/Users/lukasletovanec/Projects/work/remastr'
+let g:netrw_dirhist_4='/Users/lukasletovanec/Projects/work/mobly/broker_platform_front'
+let g:netrw_dirhist_3='/Users/lukasletovanec/Projects/personal/reviewear-frontend'
+let g:netrw_dirhist_2='/Users/lukasletovanec/Projects/work/remastr/goud_frontend'
+let g:netrw_dirhist_1='/Users/lukasletovanec/Projects/work/mobly/broker_platform_front'
+let g:netrw_dirhist_0='/Users/lukasletovanec/Projects/work/remastr/goud_frontend'
