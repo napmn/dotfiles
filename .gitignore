@@ -1,6 +1,9 @@
-bat/
+alacritty/
 coc/
 configstore/
+iterm/
 iterm2/
 yarn/
+spotify-tui/
+tmuxp/
 nvim/autoload/
