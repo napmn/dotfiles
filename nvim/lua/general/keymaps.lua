@@ -112,3 +112,4 @@ map("n", "<Leader><Leader>s", "<cmd>source ~/.config/nvim/lua/napmn/luasnip.lua<
 
 -- react-extract
 vim.keymap.set({ "v" }, "<Leader>re", require("react-extract").extract_to_new_file)
+vim.keymap.set({ "v" }, "<Leader>rc", require("react-extract").extract_to_current_file)
