@@ -1,0 +1,26 @@
+#!/bin/bash
+
+RED="\033[0;31m"
+NC="\033[0m"
+inside_git_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
+
+if ! [ "$inside_git_repo" ]; then
+  echo -e "${RED}Not inside a git repo.${NC}"
+  exit
+fi
+
+new_branch=$1
+current_branch=`git rev-parse --abbrev-ref HEAD`
+changes=`git diff $current_branch..$new_branch --compact-summary | grep migrations/ | wc -l`
+
+if (( changes > 0 )); then
+  no_text="${RED}Better do it then!${NC}"
+  read -p "Have you unmigrated local migrations [y/n]? " yn
+  case $yn in
+    [Yy]* ) ;;
+    [Nn]* ) echo -e $no_text; exit;;
+    * ) echo -e $no_text; exit;;
+  esac
+fi
+
+git checkout $new_branch
