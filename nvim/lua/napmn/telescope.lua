@@ -9,7 +9,7 @@ M.search_tailwind_docs = function()
       -- results_height = 10,
       prompt_title = "Search Tailwind Docs",
       preview_title = "Documentation",
-      cwd = "~/Projects/fun/scraping/tailwind-docs/tailwind_docs/"
+      cwd = "~/Projects/fun/scrape-tailwind-docs/tailwind_docs/"
     })
   )
 end

@@ -113,10 +113,6 @@ local config = {
             top_align = "center",
           },
         },
-        win_options = {
-          winblend = 0,
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
-        }
       },
       -- Mappings for tree window. See `:h nep-tree-mappings` for a list of built-in commands.
       -- You can also create your own commands by providing a function instead of a string.

@@ -37,9 +37,20 @@ M.setup = function()
 
   vim.diagnostic.config(config)
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded"
-  })
+  -- filters out empty suggestions for hover
+  vim.lsp.handlers['textDocument/hover'] = function(_, result, ctx, config)
+    config = config or {}
+    config.focus_id = ctx.method
+    if not (result and result.contents) then
+      return
+    end
+    local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+    markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+    if vim.tbl_isempty(markdown_lines) then
+      return
+    end
+    return vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })(_, result, ctx, config)
+  end
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded"
@@ -115,15 +126,16 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", ":lua vim.lsp.buf.hover()<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gH", ":lua vim.diagnostic.open_float()<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>fd", ":lua vim.lsp.buf.formatting()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "v", "<Leader>fd", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]]
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>fd", "<cmd>Format<cr>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "v", "<Leader>fd", "<cmd>Format<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]g", '<cmd>lua vim.diagnostic.goto_next({ severity = { min = vim.diagnostic.severity.INFO } })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "[g", '<cmd>lua vim.diagnostic.goto_prev({ severity = { min = vim.diagnostic.severity.INFO } })<CR>', opts)
 end
 
 local function lsp_highlight_document(client)
   -- highlight references on cursor hold
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -140,8 +152,8 @@ end
 M.on_attach = function(client, bufnr)
   require("lsp_signature").on_attach(lsp_signature_config)
   if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
@@ -149,6 +161,6 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+M.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 return M

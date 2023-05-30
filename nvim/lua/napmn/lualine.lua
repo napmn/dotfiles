@@ -1,31 +1,32 @@
 local M = {}
 
-local colors = {
-  bg = '#2e3447',
-  fg = '#bfc7d5',
-  section_bg = '#414860',
-  fg_darker = '#697098',
-  grey = "#3e4452",
-  blue = '#82aaff',
-  orange = '#ffcb6b',
-  red = '#ff5370',
-  magenta = '#c792ea',
-  cyan = '#89ddff',
-  green = '#c3e88d'
-}
+-- Palenight
+-- local colors = {
+--   bg = '#2e3447',
+--   fg = '#bfc7d5',
+--   section_bg = '#414860',
+--   fg_darker = '#697098',
+--   grey = "#3e4452",
+--   blue = '#82aaff',
+--   orange = '#ffcb6b',
+--   red = '#ff5370',
+--   magenta = '#c792ea',
+--   cyan = '#89ddff',
+--   green = '#c3e88d'
+-- }
 
 
-M.theme = {
-  -- normal is used for all other modes
-  normal = {
-    a = { bg = colors.cyan, fg = colors.bg, gui = "bold" },
-    b = { bg = colors.section_bg },
-    c = { bg = colors.bg, fg = colors.orange },
-    x = { bg = colors.bg, fg = colors.fg_darker },
-    y = { bg = colors.section_bg, fg = colors.fg },
-    z = { bg = colors.section_bg, fg = colors.fg }
-  }
-}
+-- M.theme = {
+--   -- normal is used for all other modes
+--   normal = {
+--     a = { bg = colors.cyan, fg = colors.bg, gui = "bold" },
+--     b = { bg = colors.section_bg },
+--     c = { bg = colors.bg, fg = colors.orange },
+--     x = { bg = colors.bg, fg = colors.fg_darker },
+--     y = { bg = colors.section_bg, fg = colors.fg },
+--     z = { bg = colors.section_bg, fg = colors.fg }
+--   }
+-- }
 
 local lenny_mapping = {
   n       = '  (⌐■_■)  ',
@@ -37,18 +38,6 @@ local lenny_mapping = {
   R       = ' ⤜(ʘ_ʘ)⤏  ',
   s       = '  (ಠ_ಠ)   ',
   S       = '  (ಠ_ಠ)   ',
-}
-
-local highlight_mapping = {
-  n       = 'LualineModeN',
-  i       = 'LualineModeI',
-  c       = 'LualineModeC',
-  V       = 'LualineModeV',
-  ['']    = 'LualineModeV',
-  v       = 'LualineModeV',
-  R       = 'LualineModeR',
-  s       = 'LualineModeR',
-  S       = 'LualineModeR',
 }
 
 local mode_alias = {
@@ -66,8 +55,7 @@ local mode_alias = {
 M.mode_with_lenny = function()
   local mode = vim.fn.mode()
   return lenny_mapping[mode]
-    .. "%#" .. highlight_mapping[mode] .. "#"
-    .. mode_alias[mode]
+    .. "%#StatusLine#" .. mode_alias[mode]
 end
 
 M.lsp_server_info = function()

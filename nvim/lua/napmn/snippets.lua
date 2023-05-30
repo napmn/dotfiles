@@ -91,4 +91,5 @@ ls.add_snippets("typescriptreact", {
       }
     )
   ),
+  s( "esd", t("/* eslint-disable */"))
 })

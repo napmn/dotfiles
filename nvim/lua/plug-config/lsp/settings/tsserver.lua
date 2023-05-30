@@ -14,7 +14,7 @@ local filter = function(arr, fn)
 end
 
 local filter_react_dts = function(value)
-  return string.match(value.uri, 'react/index.d.ts') == nil
+  return string.match(value.targetUri, 'react/index.d.ts') == nil
 end
 
 return {

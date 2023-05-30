@@ -34,7 +34,8 @@ local options = {
     scrolloff = 8,              -- Scroll X lines before hitting bottom or top
     ignorecase = true,          -- Ignores case in commands
     smartcase = true,
-    signcolumn="yes"            -- always include sign column
+    signcolumn="yes",           -- always include sign column
+    termguicolors = true
 }
 
 vim.opt.shortmess:append "c"

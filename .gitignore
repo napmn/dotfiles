@@ -9,3 +9,4 @@ tmuxp/
 nvim/autoload/
 neofetch/
 raycast/
+.DS_Store

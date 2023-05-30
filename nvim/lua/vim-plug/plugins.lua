@@ -76,10 +76,8 @@ Plug('dstein64/vim-startuptime')
 Plug('folke/zen-mode.nvim')
 
 -- Themes
--- Plug 'chriskempson/base16-vim'
--- Plug 'joshdick/onedark.vim'
-Plug('drewtempelmeyer/palenight.vim')
-Plug('marko-cerovac/material.nvim')
+-- Plug('marko-cerovac/material.nvim')
+Plug('folke/tokyonight.nvim')
 
 -- Local dev
 -- Plug('~/Projects/opensource/react-extract.nvim')

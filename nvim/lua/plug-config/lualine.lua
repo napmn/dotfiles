@@ -5,9 +5,10 @@ local lsp_server_info = my_lualine.lsp_server_info
 
 require("lualine").setup({
   options = {
-    theme = theme,
+    theme = 'tokyonight',
+    -- theme = theme,
     component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     -- globalstatus = true,
   },
   sections = {
@@ -55,14 +56,17 @@ require("lualine").setup({
     lualine_y = {
       {
         "progress",
-        separator = { left = "", right = ""}
+        separator = { left = "", right = ""},
+        fmt = function(str)
+          return "%#MiniStatuslineDevinfo#" .. str
+        end
       }
     },
     lualine_z = {
       {
         "location",
         fmt = function(str)
-          return "%#LualineSeparator#▎" .. "%#lualine_z_normal#" .. str
+          return "%#MiniStatuslineDevinfo#▎" .. str
         end,
         padding = { left = 0, right = 1}
       }

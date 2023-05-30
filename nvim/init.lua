@@ -20,7 +20,7 @@ require("general.settings")
 require("general.autocommands")
 require("general.commands")
 
-require("themes.material")
+require("themes.tokyonight")
 
 require("plug-config.indent-blankline")
 require("plug-config.hexokinase")
