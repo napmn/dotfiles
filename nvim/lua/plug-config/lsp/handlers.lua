@@ -129,6 +129,7 @@ local function lsp_keymaps(bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]]
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>fd", "<cmd>Format<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "v", "<Leader>fd", "<cmd>Format<cr>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>ca", ":lua vim.lsp.buf.code_action()<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]g", '<cmd>lua vim.diagnostic.goto_next({ severity = { min = vim.diagnostic.severity.INFO } })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "[g", '<cmd>lua vim.diagnostic.goto_prev({ severity = { min = vim.diagnostic.severity.INFO } })<CR>', opts)
 end
@@ -148,6 +149,15 @@ local function lsp_highlight_document(client)
     )
   end
 end
+
+local deprecated_handler = require("nvim-custom-diagnostic-highlight").setup {
+    register_handler = false,
+    highlight_group = "LSPDeprecated",
+    patterns_override = { "deprecated" },
+    diagnostic_handler_namespace = "deprecated_handler",
+}
+vim.cmd [[highlight LSPDeprecated gui=strikethrough]]
+vim.diagnostic.handlers["my/deprecated"] = deprecated_handler
 
 M.on_attach = function(client, bufnr)
   require("lsp_signature").on_attach(lsp_signature_config)
