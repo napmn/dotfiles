@@ -1,9 +1,13 @@
-vim.g.bufferline = {
+vim.g.barbar_auto_setup = false
+
+require('barbar').setup({
   animation = false,
-  closable = false,
+  icons = {
+    button = ''
+  },
   maximum_padding = 2,
   semantic_letters = true
-}
+})
 
 -- Palenight
 -- vim.cmd[[

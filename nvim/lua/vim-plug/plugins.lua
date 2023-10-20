@@ -10,7 +10,7 @@ Plug('Vimjas/vim-python-pep8-indent')
 Plug('MaxMEllon/vim-jsx-pretty')
 -- Better syntax highlighting
 Plug('nvim-treesitter/nvim-treesitter') -- do :TSUpdate
-Plug 'nvim-treesitter/playground'
+Plug ('nvim-treesitter/playground')
 -- Auto pairs for '(' '[' '{'
 Plug('windwp/nvim-autopairs')
 -- statusline
@@ -31,10 +31,14 @@ Plug('hrsh7th/cmp-cmdline')
 Plug('hrsh7th/cmp-nvim-lsp')
 Plug('hrsh7th/cmp-nvim-lua')
 -- lsp
+Plug ('williamboman/mason.nvim')
+Plug ('williamboman/mason-lspconfig.nvim')
 Plug('neovim/nvim-lspconfig')
-Plug('williamboman/nvim-lsp-installer')
+-- Plug('williamboman/nvim-lsp-installer')
 Plug('ray-x/lsp_signature.nvim') -- for nice function signatures
 Plug('jose-elias-alvarez/null-ls.nvim')
+Plug('pmizio/typescript-tools.nvim')
+Plug('Kasama/nvim-custom-diagnostic-highlight') -- for custom deprecated highlight
 -- file explorer
 Plug('MunifTanjim/nui.nvim') -- needed by neo-tree
 Plug('nvim-neo-tree/neo-tree.nvim', { branch = 'v2.x' })
@@ -44,6 +48,7 @@ Plug('lewis6991/gitsigns.nvim')
 Plug('nvim-lua/popup.nvim')
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
+Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
 Plug('airblade/vim-rooter')
 -- Easy 'surrounding' like brackets, quotes
 Plug('tpope/vim-surround')
@@ -67,7 +72,7 @@ Plug('karb94/neoscroll.nvim')
 -- pretty notifications
 Plug('rcarriga/nvim-notify')
 -- colorizer of color codes
-Plug('rrethy/vim-hexokinase', {['do'] = 'make hexokinase'})
+-- Plug('rrethy/vim-hexokinase', {['do'] = 'make hexokinase'})
 -- indentlines
 Plug('lukas-reineke/indent-blankline.nvim')
 -- measures startup time

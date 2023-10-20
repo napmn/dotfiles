@@ -23,7 +23,7 @@ require("general.commands")
 require("themes.tokyonight")
 
 require("plug-config.indent-blankline")
-require("plug-config.hexokinase")
+-- require("plug-config.hexokinase")
 require("plug-config.alpha-nvim")
 require("plug-config.nvim-notify")
 require("plug-config.lualine")
