@@ -72,7 +72,7 @@ Plug('karb94/neoscroll.nvim')
 -- pretty notifications
 Plug('rcarriga/nvim-notify')
 -- colorizer of color codes
--- Plug('rrethy/vim-hexokinase', {['do'] = 'make hexokinase'})
+Plug('norcalli/nvim-colorizer.lua')
 -- indentlines
 Plug('lukas-reineke/indent-blankline.nvim')
 -- measures startup time
