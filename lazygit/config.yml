@@ -1,0 +1,4 @@
+os:
+  open: "nvim --server $NVIM --remote-tab {{filename}}"
+  # source: https://github.com/LazyVim/LazyVim/discussions/543#discussioncomment-5808573
+  edit: "nvim --server $NVIM --remote-tab {{filename}}"
