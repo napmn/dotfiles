@@ -67,6 +67,7 @@ map("n", "<C-p>", "<cmd>Telescope find_files hidden=true<cr>", {})
 map("n", "<C-f>", "<cmd>Telescope live_grep<cr>", { silent = true })
 map("n", "<C-b>", "<cmd>Telescope buffers<cr>", { silent = true })
 map("n", "<leader>tr", "<cmd>Telescope resume<cr>", { silent = true })
+map("n", "<leader>gs", "<cmd>Telescope lsp_references<cr>", { silent = true })
 map("n", "<leader>twf", ":lua require('napmn.telescope').search_tailwind_docs()<cr>", { silent = true })
 map("n", "<leader>twp", ":lua require('napmn.telescope').browse_tailwind_docs()<cr>", { silent = true })
 map("n", "<leader>mdf", ":lua require('napmn.telescope').my_dotfiles()<cr>", { silent = true })
@@ -108,6 +109,12 @@ vim.keymap.set({ "i", "s" }, "<c-k>", function()
     ls.jump(-1)
   end
 end, { silent = true })
+
+vim.keymap.set({ "n" }, "<Leader>lspr", function()
+  vim.cmd("LspRestart")
+  -- typescript-tools fix (https://github.com/pmizio/typescript-tools.nvim/issues/202#issuecomment-1893722715)
+  vim.diagnostic.reset()
+end, { noremap = true, silent = true })
 
 map("n", "<Leader><Leader>s", "<cmd>source ~/.config/nvim/lua/napmn/luasnip.lua<cr>", { silent = true })
 
