@@ -58,6 +58,13 @@ cmp.setup {
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    ['<C-s>'] = cmp.mapping.complete({
+      -- config = {
+      --   sources = {
+      --     { name = 'vsnip' }
+      --   }
+      -- }
+    })
     -- ["<Tab>"] = cmp.mapping(function(fallback)
     --   -- if cmp.visible() then
     --   --   cmp.select_next_item()
